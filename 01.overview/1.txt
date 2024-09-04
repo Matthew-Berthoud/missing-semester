@@ -1,0 +1,130 @@
+bash is the terminal 
+class will be linux centric, but shoudl work on most platforms
+
+        date
+            gives the datetime
+        echo
+            gives back what you pass
+
+Shell is really a programming language
+
+Environment Variables: set when you start your Shell
+    Home directory, username, path, etc
+File locations
+    macOS and linux have one directory, windows has multiple (C: and D: drives)
+
+Path:
+        echo $PATH
+            shows you colon separated paths
+            when you execute a terminal command it looks through all these paths
+            one at a time until it can do what you asked
+        which
+            shows you file location of whatever you would run
+
+    "Absolute Path" = actual path from base of directory
+    "Relative Path" = path from where you are
+        pwd
+            "print working directory", shows where you are
+        cd __(relative or absolute path, pick what's shorter)___
+            change directory
+            you can do cd ./something if you only want /something if it exists under
+            where you currently are
+            If you want to run a program involving paths, use absolute path
+                ??? does this make sense?
+            cd ~ takes you to home directory
+            can specify relative paths after ~
+            cd - takes you to where you were last 
+                can toggle between directories
+
+        Special directories:
+            . = current directory
+            .. = parent directory
+
+        ls (can pass path as argument)
+
+Arguments:
+        --help pulls them up
+            but it doesn't for me...
+    "Usage: ls [OPTION]... [FILE]..."
+            optional number of options and optional number of files
+
+    Flag = single dash and single letter is usually a Flag
+    Option = other Arguments
+
+-l flag "uses a long listed format"
+    gives you lots on info with ls -l
+
+ls -l shows permissions at the beginning
+eg.
+rw-r--r-- 1 jon jon 102 Dec 5 14:06 404.html
+    rw- : user owner permissions (read write)
+    r-- : group owner permissions (read)
+    r-- : anyone else permissions (read)
+
+read, write, execute (rwx) (also s, and l, which we won't touch on)
+    basically view = read, edit = write
+    execute = search "can you enter the directory"
+        in order to access file, need execute on all parent directories
+
+mv lets you rename a file or move a file
+mv doftiles.md foo.md (remnames)
+mv dotfiles.md /folder/foo.md (moves and renames)
+
+cp does the same thing but leaves original copy (can copy and rename)
+rm removes files
+rm -r recursiely removes all files in directory
+rmdir removes empty directory only
+
+mkdir: works like below if you want a space in the name
+mkdir "My Photos"
+mkdir My\ Photos
+
+to get more info on command, use man
+
+man ls gives manual pages of ls
+q quits this program
+
+control l clears
+
+
+Streams: input stream by default is keyboard, or terminal
+         output stream by default is terminal
+
+        you can change streams!
+
+            < file > file  (like how we did in tim davis classes)
+
+cat prints contents of file
+    (helpfully works with the stream stuff)
+
+can essentially copy a file like this
+cat < hello.txt > hello2.txt
+
+>> means append, so itll add more but not reset it
+
+pipe character: |
+    "take output of program to the left and make it the input of program to the right"
+    can chain together a bunch of cool stuff
+    can even chain images / videos and stuff somehow???
+
+tail: prints last n lines of output
+
+ls -l / | tail -n1        
+    output of ls -l will be input of tail
+
+root is a superuser, it can do whatever it wants
+most of the time you will not be root
+    it would be dangerous
+
+sudo lets you do things as the super user
+    runs the command as if you were root
+    you have to make sure every part of a pipe thing has the right permissions though 
+
+tee writes input to file and to your screen
+
+can do sudo su to open superuser shell, and not have to type sudo every time
+    exit will exit this
+
+xdg-open on linux is same as open on macOS
+
+Should never have to open finder again woohoo!
